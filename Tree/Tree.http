@@ -1,0 +1,63 @@
+﻿@Tree_HostAddress = http://localhost:5293
+
+### Get root (null before creation)
+GET {{Tree_HostAddress}}/api/BinaryTree/root
+Accept: application/json
+
+### Create root
+POST {{Tree_HostAddress}}/api/BinaryTree/root
+Content-Type: application/json
+
+{
+  "value": 10
+}
+
+### List nodes (BFS)
+GET {{Tree_HostAddress}}/api/BinaryTree/nodes
+Accept: application/json
+
+### Create left child of ROOT_ID
+# Replace ROOT_ID with actual id returned from create root
+POST {{Tree_HostAddress}}/api/BinaryTree/child
+Content-Type: application/json
+
+{
+  "parentId": "ROOT_ID",
+  "side": "left",
+  "value": 5
+}
+
+### Create right child of ROOT_ID
+POST {{Tree_HostAddress}}/api/BinaryTree/child
+Content-Type: application/json
+
+{
+  "parentId": "ROOT_ID",
+  "side": "right",
+  "value": 15
+}
+
+### Get node by id
+# Replace NODE_ID with actual id
+GET {{Tree_HostAddress}}/api/BinaryTree/node/NODE_ID
+Accept: application/json
+
+### Update node value
+# Replace NODE_ID
+PUT {{Tree_HostAddress}}/api/BinaryTree/node/NODE_ID
+Content-Type: application/json
+
+{
+  "value": 42
+}
+
+### Delete node (subtree)
+# Replace NODE_ID
+DELETE {{Tree_HostAddress}}/api/BinaryTree/node/NODE_ID
+
+### Traverse inorder | preorder | postorder
+GET {{Tree_HostAddress}}/api/BinaryTree/traverse/inorder
+
+### Get parent
+# Replace NODE_ID
+GET {{Tree_HostAddress}}/api/BinaryTree/parent/NODE_ID
